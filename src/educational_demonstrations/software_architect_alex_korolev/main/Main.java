@@ -12,15 +12,47 @@ public class Main {
 	public static void main(String[] args) {
 		List<Animal> animals = initListOfAnimals();
 
-		// filterInsects(animals);
-		// sortedByAge(animals);
-		// sortedByAgeReversed(animals);
+		filterInsects(animals);
+		sortedByAge(animals);
+		sortedByAgeReversed(animals);
 
-		// isAllMatch(animals);
+		isAllMatch(animals);
 		isAnyMatch(animals);
+		isNoneMatch(animals);
+
+		minAgeAnimal(animals);
+		maxAgeAnimal(animals);
+
+		groupedByClassification(animals);
 
 	}
-	
+
+	@SuppressWarnings(value = "unused")
+	private static void groupedByClassification(List<Animal> animals) {
+		animals.stream().collect(Collectors.groupingBy(Animal::getClassification))
+				.forEach((classification, groupedAnimals) -> {
+					System.out.println(classification);
+					groupedAnimals.forEach(System.out::println);
+					System.out.println();
+				});
+	}
+
+	@SuppressWarnings(value = "unused")
+	private static void maxAgeAnimal(List<Animal> animals) {
+		animals.stream().min(Comparator.comparing(Animal::getAge)).ifPresent(System.out::println);
+	}
+
+	@SuppressWarnings(value = "unused")
+	private static void minAgeAnimal(List<Animal> animals) {
+		animals.stream().max(Comparator.comparing(Animal::getAge)).ifPresent(System.out::println);
+	}
+
+	@SuppressWarnings(value = "unused")
+	private static void isNoneMatch(List<Animal> animals) {
+		boolean isNoneMatch = animals.stream().noneMatch(animal -> animal.getName().equals("Quokka"));
+		System.out.println("Isn't there animal that name is 'Quokka': " + isNoneMatch);
+	}
+
 	@SuppressWarnings(value = "unused")
 	private static void isAnyMatch(List<Animal> animals) {
 		boolean anyMatch = animals.stream().anyMatch(animal -> animal.getAge() > 10);
@@ -86,15 +118,15 @@ public class Main {
 		animals.add(new Animal("Penguin", Classification.BIRD, 4.2));
 		animals.add(new Animal("Dolphin", Classification.MAMMAL, 6.3));
 		animals.add(new Animal("Turtle", Classification.REPTILE, 50.4));
-		animals.add(new Animal("Goldfish", Classification.FISH, 1.7));
+		animals.add(new Animal("Goldfish", Classification.FISH, 0.7));
 		animals.add(new Animal("Tiger", Classification.MAMMAL, 7.4));
 		animals.add(new Animal("Eagle", Classification.BIRD, 5.5));
 		animals.add(new Animal("Snake", Classification.REPTILE, 3.6));
 		animals.add(new Animal("Newt", Classification.AMPHIBIAN, 4.6));
-		animals.add(new Animal("Ant", Classification.INSECT, 1.2));
+		animals.add(new Animal("Ant", Classification.INSECT, 0.2));
 		animals.add(new Animal("Whale", Classification.MAMMAL, 20.1));
 		animals.add(new Animal("Parrot", Classification.BIRD, 2.8));
-		animals.add(new Animal("Lizard", Classification.REPTILE, 1.3));
+		animals.add(new Animal("Lizard", Classification.REPTILE, 0.3));
 		animals.add(new Animal("Salamander", Classification.AMPHIBIAN, 3.2));
 		animals.add(new Animal("Aardvark", Classification.MAMMAL, 5.2));
 		animals.add(new Animal("Quokka", Classification.MAMMAL, 3.6));
