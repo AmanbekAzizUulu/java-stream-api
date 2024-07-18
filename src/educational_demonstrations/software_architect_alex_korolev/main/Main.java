@@ -14,6 +14,32 @@ public class Main {
 
 		// filterInsects(animals);
 		// sortedByAge(animals);
+		// sortedByAgeReversed(animals);
+
+		// isAllMatch(animals);
+		isAnyMatch(animals);
+
+	}
+	
+	@SuppressWarnings(value = "unused")
+	private static void isAnyMatch(List<Animal> animals) {
+		boolean anyMatch = animals.stream().anyMatch(animal -> animal.getAge() > 10);
+		System.out.println("Is there animal that age is above 10: " + anyMatch);
+	}
+
+	@SuppressWarnings(value = "unused")
+	private static void isAllMatch(List<Animal> animals) {
+		boolean allMatch = animals.stream().allMatch(animal -> animal.getAge() > 10);
+		System.out.println("Is all animals' age is above 10: " + allMatch);
+	}
+
+	@SuppressWarnings(value = "unused")
+	private static void sortedByAgeReversed(List<Animal> animals) {
+		List<Animal> sortedByAgeReversed = animals.stream()
+				.sorted(Comparator.comparing(Animal::getAge).reversed())
+				.collect(Collectors.toList());
+
+		sortedByAgeReversed.forEach(System.out::println);
 	}
 
 	@SuppressWarnings(value = "unused")
@@ -50,36 +76,36 @@ public class Main {
 	private static List<Animal> initListOfAnimals() {
 		List<Animal> animals = new ArrayList<>();
 
-		animals.add(new Animal("Lion", Classification.MAMMAL, 5));
-		animals.add(new Animal("Elephant", Classification.MAMMAL, 8));
-		animals.add(new Animal("Hawk", Classification.BIRD, 3));
-		animals.add(new Animal("Shark", Classification.FISH, 12));
-		animals.add(new Animal("Crocodile", Classification.REPTILE, 10));
-		animals.add(new Animal("Frog", Classification.AMPHIBIAN, 2));
-		animals.add(new Animal("Butterfly", Classification.INSECT, 1));
-		animals.add(new Animal("Penguin", Classification.BIRD, 4));
-		animals.add(new Animal("Dolphin", Classification.MAMMAL, 6));
-		animals.add(new Animal("Turtle", Classification.REPTILE, 50));
-		animals.add(new Animal("Goldfish", Classification.FISH, 1));
-		animals.add(new Animal("Tiger", Classification.MAMMAL, 7));
-		animals.add(new Animal("Eagle", Classification.BIRD, 5));
-		animals.add(new Animal("Snake", Classification.REPTILE, 3));
-		animals.add(new Animal("Newt", Classification.AMPHIBIAN, 4));
-		animals.add(new Animal("Ant", Classification.INSECT, 1));
-		animals.add(new Animal("Whale", Classification.MAMMAL, 20));
-		animals.add(new Animal("Parrot", Classification.BIRD, 2));
-		animals.add(new Animal("Lizard", Classification.REPTILE, 1));
-		animals.add(new Animal("Salamander", Classification.AMPHIBIAN, 3));
-		animals.add(new Animal("Aardvark", Classification.MAMMAL, 5));
-		animals.add(new Animal("Quokka", Classification.MAMMAL, 3));
-		animals.add(new Animal("Kakapo", Classification.BIRD, 4));
-		animals.add(new Animal("Axolotl", Classification.AMPHIBIAN, 6));
-		animals.add(new Animal("Coelacanth", Classification.FISH, 65));
-		animals.add(new Animal("Tuataras", Classification.REPTILE, 50));
-		animals.add(new Animal("Goliath Beetle", Classification.INSECT, 1));
-		animals.add(new Animal("Saiga", Classification.MAMMAL, 8));
-		animals.add(new Animal("Snowy Owl", Classification.BIRD, 9));
-		animals.add(new Animal("Glass Frog", Classification.AMPHIBIAN, 2));
+		animals.add(new Animal("Lion", Classification.MAMMAL, 5.5));
+		animals.add(new Animal("Elephant", Classification.MAMMAL, 8.3));
+		animals.add(new Animal("Hawk", Classification.BIRD, 3.1));
+		animals.add(new Animal("Shark", Classification.FISH, 12.2));
+		animals.add(new Animal("Crocodile", Classification.REPTILE, 10.4));
+		animals.add(new Animal("Frog", Classification.AMPHIBIAN, 2.8));
+		animals.add(new Animal("Butterfly", Classification.INSECT, 1.1));
+		animals.add(new Animal("Penguin", Classification.BIRD, 4.2));
+		animals.add(new Animal("Dolphin", Classification.MAMMAL, 6.3));
+		animals.add(new Animal("Turtle", Classification.REPTILE, 50.4));
+		animals.add(new Animal("Goldfish", Classification.FISH, 1.7));
+		animals.add(new Animal("Tiger", Classification.MAMMAL, 7.4));
+		animals.add(new Animal("Eagle", Classification.BIRD, 5.5));
+		animals.add(new Animal("Snake", Classification.REPTILE, 3.6));
+		animals.add(new Animal("Newt", Classification.AMPHIBIAN, 4.6));
+		animals.add(new Animal("Ant", Classification.INSECT, 1.2));
+		animals.add(new Animal("Whale", Classification.MAMMAL, 20.1));
+		animals.add(new Animal("Parrot", Classification.BIRD, 2.8));
+		animals.add(new Animal("Lizard", Classification.REPTILE, 1.3));
+		animals.add(new Animal("Salamander", Classification.AMPHIBIAN, 3.2));
+		animals.add(new Animal("Aardvark", Classification.MAMMAL, 5.2));
+		animals.add(new Animal("Quokka", Classification.MAMMAL, 3.6));
+		animals.add(new Animal("Kakapo", Classification.BIRD, 4.7));
+		animals.add(new Animal("Axolotl", Classification.AMPHIBIAN, 6.3));
+		animals.add(new Animal("Coelacanth", Classification.FISH, 65.9));
+		animals.add(new Animal("Tuataras", Classification.REPTILE, 50.1));
+		animals.add(new Animal("Goliath Beetle", Classification.INSECT, 1.2));
+		animals.add(new Animal("Saiga", Classification.MAMMAL, 8.0));
+		animals.add(new Animal("Snowy Owl", Classification.BIRD, 9.4));
+		animals.add(new Animal("Glass Frog", Classification.AMPHIBIAN, 2.5));
 
 		return animals;
 	}

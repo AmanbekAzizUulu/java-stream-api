@@ -5,9 +5,9 @@ import educational_demonstrations.software_architect_alex_korolev.enums.Classifi
 public class Animal {
 	private final String name;
 	private final Classification classification;
-	private final int age;
+	private final double age;
 
-	public Animal(String name, Classification classification, int age) {
+	public Animal(String name, Classification classification, double age) {
 		this.name = name;
 		this.classification = classification;
 		this.age = age;
@@ -21,7 +21,7 @@ public class Animal {
 		return classification;
 	}
 
-	public int getAge() {
+	public double getAge() {
 		return age;
 	}
 
